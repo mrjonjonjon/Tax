@@ -81,7 +81,7 @@ public class Envelope : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Paper")))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Paper")|LayerMask.GetMask("Calculator")))
             {
                 if (hit.collider.gameObject == this.gameObject)
                 {
