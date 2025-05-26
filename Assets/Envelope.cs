@@ -71,7 +71,11 @@ public class Envelope : MonoBehaviour
 
     void Update()
     {
-        HandleDrag();
+        if (!isZoomedIn)
+        {
+             HandleDrag();
+        }
+       
 
         // Toggle zoom in/out with "F" key
         if (Input.GetKeyDown(KeyCode.F))

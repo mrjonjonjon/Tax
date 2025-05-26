@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc7987f000644563a5b997d09a3f89b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
   tmpro: {fileID: 3146911418652607500}
   text: 'Section 1: Introduction The purpose of this document is to provide an overview
     of the tax reporting obligations as they pertain to the fiscal year in question.
@@ -134,6 +135,9 @@ MonoBehaviour:
   dragSmoothing: 10
   moveSpeed: 5
   zoomTarget: {fileID: 0}
+  raycaster: {fileID: 4350067191494414124}
+  eventSystem: {fileID: 0}
+  targetButton: {fileID: 6774608744071260143}
 --- !u!1 &6295030753554819246
 GameObject:
   m_ObjectHideFlags: 0
