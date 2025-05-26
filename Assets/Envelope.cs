@@ -1,10 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-using UnityEngine.EventSystems; // At top of script
-
-
-using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -13,28 +9,27 @@ using System.Linq;
 public class Envelope : MonoBehaviour
 {
     private bool isDragging = false;
-    private Vector3 lastMousePosition;
     private Vector3 velocity;
-    public Camera mainCamera;
+    private Vector3 dragOffsetLocal;
 
+    public Camera mainCamera;
     public TextMeshProUGUI tmpro;
     public string text;
 
-    [SerializeField] public float planeY = 0.0f; // Set the Y-coordinate of the plane
-    [SerializeField] public float dragSmoothing = 10.0f; // Smoothing for drag motion
-    [SerializeField] public float moveSpeed = 2.0f; // Speed for smooth movement
-    [SerializeField] private Transform zoomTarget; // Target transform for zoom position and rotation
+    [SerializeField] public float planeY = 0.0f;
+    [SerializeField] public float dragSmoothing = 10.0f;
+    [SerializeField] public float moveSpeed = 50.0f;
+    [SerializeField] private Transform zoomTarget;
 
     private Coroutine moveCoroutine;
     private bool isZoomedIn = false;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
 
-
-
     public GraphicRaycaster raycaster;
     public EventSystem eventSystem;
-    public GameObject targetButton; // assign your button here
+    public GameObject targetButton;
+
     void Start()
     {
         if (tmpro != null)
@@ -43,20 +38,19 @@ public class Envelope : MonoBehaviour
         }
 
         mainCamera = Camera.main;
-
-        // Store the original position and rotation
         originalPosition = transform.position;
         originalRotation = transform.rotation;
+        eventSystem = EventSystem.current;
+        zoomTarget = Camera.main.transform.Find("zoomTarget");
     }
-
 
     public void ToggleZoom()
     {
-
         if (moveCoroutine != null)
         {
-            StopCoroutine(moveCoroutine); // Interrupt ongoing coroutine
+            StopCoroutine(moveCoroutine);
         }
+
         if (isZoomedIn)
         {
             moveCoroutine = StartCoroutine(MoveToTransform(originalPosition, originalRotation));
@@ -73,33 +67,17 @@ public class Envelope : MonoBehaviour
     {
         if (!isZoomedIn)
         {
-             HandleDrag();
+            HandleDrag();
         }
-       
 
-        // Toggle zoom in/out with "F" key
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (moveCoroutine != null)
-            {
-                //StopCoroutine(moveCoroutine); // Interrupt ongoing coroutine
-            }
-
-            if (isZoomedIn)
-            {
-                //
-            }
-            else
-            {
-
-            }
+            // Optional: hook for toggling zoom if needed
         }
     }
 
     void HandleDrag()
     {
-        //check if pointer is over a specific button.)
-
         PointerEventData pointerData = new PointerEventData(eventSystem)
         {
             position = Input.mousePosition
@@ -108,31 +86,29 @@ public class Envelope : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         raycaster.Raycast(pointerData, results);
 
-        bool isOverButton = results.Any(r => r.gameObject == targetButton);
-        if (isOverButton) {
+        bool isOverButton = targetButton && results.Any(r => r.gameObject == targetButton);
+        if (isOverButton)
+        {
             Debug.Log("Pointer is over the button, not dragging.");
             return;
         }
 
-
-
-        RaycastHit hit = new RaycastHit();
+        RaycastHit hit;
         if (Input.GetMouseButtonDown(0))
         {
-
-
             Debug.Log("Mouse Down on Envelope");
 
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Paper")))
             {
-                Debug.Log("Hit Paper Layer");
                 if (hit.collider.gameObject == this.gameObject)
                 {
                     isDragging = true;
-                    lastMousePosition = GetMouseWorldPositionOnPlane();
+
+                    // Store offset from object center to hit point
+                    Vector3 localHitPoint = transform.InverseTransformPoint(hit.point);
+                    dragOffsetLocal = localHitPoint;
+
                     velocity = Vector3.zero;
                 }
             }
@@ -142,29 +118,15 @@ public class Envelope : MonoBehaviour
         {
             isDragging = false;
         }
-        Debug.Log("IsDragging: " + isDragging);
+
         if (isDragging)
         {
-
-
             if (Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, LayerMask.GetMask("Desk")))
             {
-                Debug.Log("Hit Desk Layer");
-                // Calculate the new position based on the hit point
                 Vector3 worldMousePosition = new Vector3(hit.point.x, planeY, hit.point.z);
-                transform.position = worldMousePosition;
-
+                Vector3 adjustedPosition = worldMousePosition - transform.TransformVector(dragOffsetLocal);
+                transform.position = adjustedPosition;
             }
-
-
-
-
-        }
-        else
-        {
-            // Deceleration when not dragging
-            //transform.position = Vector3.zero;// * Time.deltaTime;
-            //velocity = Vector3.Lerp(velocity, Vector3.zero, Time.deltaTime * dragSmoothing);
         }
     }
 
@@ -190,7 +152,6 @@ public class Envelope : MonoBehaviour
             yield return null;
         }
 
-        // Ensure final position and rotation are set
         transform.position = targetPosition;
         transform.rotation = targetRotation;
     }

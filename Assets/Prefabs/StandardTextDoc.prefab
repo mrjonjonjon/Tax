@@ -133,7 +133,7 @@ MonoBehaviour:
     must be complete, accurate, and prepared in    '
   planeY: 0.535
   dragSmoothing: 10
-  moveSpeed: 5
+  moveSpeed: 50
   zoomTarget: {fileID: 0}
   raycaster: {fileID: 4350067191494414124}
   eventSystem: {fileID: 0}

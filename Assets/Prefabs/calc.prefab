@@ -993,12 +993,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc7987f000644563a5b997d09a3f89b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
   tmpro: {fileID: 0}
   text: 
   planeY: 0.53
   dragSmoothing: 10
   moveSpeed: 2
   zoomTarget: {fileID: 0}
+  raycaster: {fileID: 0}
+  eventSystem: {fileID: 0}
+  targetButton: {fileID: 0}
 --- !u!114 &2894668969982377193
 MonoBehaviour:
   m_ObjectHideFlags: 0
