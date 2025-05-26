@@ -1,13 +1,21 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems; // At top of script
+
+
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Linq;
 
 public class Envelope : MonoBehaviour
 {
     private bool isDragging = false;
     private Vector3 lastMousePosition;
     private Vector3 velocity;
-    private Camera mainCamera;
+    public Camera mainCamera;
 
     public TextMeshProUGUI tmpro;
     public string text;
@@ -22,12 +30,18 @@ public class Envelope : MonoBehaviour
     private Vector3 originalPosition;
     private Quaternion originalRotation;
 
+
+
+    public GraphicRaycaster raycaster;
+    public EventSystem eventSystem;
+    public GameObject targetButton; // assign your button here
     void Start()
     {
-        if(tmpro!=null){
-             //tmpro.text = text;
+        if (tmpro != null)
+        {
+            //tmpro.text = text;
         }
-       
+
         mainCamera = Camera.main;
 
         // Store the original position and rotation
@@ -36,21 +50,25 @@ public class Envelope : MonoBehaviour
     }
 
 
-    public void ToggleZoom(){
+    public void ToggleZoom()
+    {
 
-         if (moveCoroutine != null)
-            {
-                StopCoroutine(moveCoroutine); // Interrupt ongoing coroutine
-            }
-            if(isZoomedIn){
-                moveCoroutine = StartCoroutine(MoveToTransform(originalPosition, originalRotation));
-                isZoomedIn = false;
-            }else{
-                moveCoroutine = StartCoroutine(MoveToTransform(zoomTarget.position, zoomTarget.rotation));
-                isZoomedIn = true;
-            }
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine); // Interrupt ongoing coroutine
+        }
+        if (isZoomedIn)
+        {
+            moveCoroutine = StartCoroutine(MoveToTransform(originalPosition, originalRotation));
+            isZoomedIn = false;
+        }
+        else
+        {
+            moveCoroutine = StartCoroutine(MoveToTransform(zoomTarget.position, zoomTarget.rotation));
+            isZoomedIn = true;
+        }
     }
- 
+
     void Update()
     {
         HandleDrag();
@@ -69,20 +87,44 @@ public class Envelope : MonoBehaviour
             }
             else
             {
-                
+
             }
         }
     }
 
     void HandleDrag()
     {
+        //check if pointer is over a specific button.)
+
+        PointerEventData pointerData = new PointerEventData(eventSystem)
+        {
+            position = Input.mousePosition
+        };
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        raycaster.Raycast(pointerData, results);
+
+        bool isOverButton = results.Any(r => r.gameObject == targetButton);
+        if (isOverButton) {
+            Debug.Log("Pointer is over the button, not dragging.");
+            return;
+        }
+
+
+
+        RaycastHit hit = new RaycastHit();
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Paper")|LayerMask.GetMask("Calculator")))
+
+            Debug.Log("Mouse Down on Envelope");
+
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Paper")))
             {
+                Debug.Log("Hit Paper Layer");
                 if (hit.collider.gameObject == this.gameObject)
                 {
                     isDragging = true;
@@ -96,19 +138,29 @@ public class Envelope : MonoBehaviour
         {
             isDragging = false;
         }
-
+        Debug.Log("IsDragging: " + isDragging);
         if (isDragging)
         {
-            Vector3 mousePosition = GetMouseWorldPositionOnPlane();
-            velocity = (mousePosition - lastMousePosition) / Time.deltaTime;
-            transform.position += velocity * Time.deltaTime;
-            lastMousePosition = mousePosition;
+
+
+            if (Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, LayerMask.GetMask("Desk")))
+            {
+                Debug.Log("Hit Desk Layer");
+                // Calculate the new position based on the hit point
+                Vector3 worldMousePosition = new Vector3(hit.point.x, planeY, hit.point.z);
+                transform.position = worldMousePosition;
+
+            }
+
+
+
+
         }
         else
         {
             // Deceleration when not dragging
-            transform.position += velocity * Time.deltaTime;
-            velocity = Vector3.Lerp(velocity, Vector3.zero, Time.deltaTime * dragSmoothing);
+            //transform.position = Vector3.zero;// * Time.deltaTime;
+            //velocity = Vector3.Lerp(velocity, Vector3.zero, Time.deltaTime * dragSmoothing);
         }
     }
 

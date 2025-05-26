@@ -152,7 +152,7 @@ MonoBehaviour:
   shredSpeed: 10
   vibrationIntensity: 0.005
   vibrationSpeed: 50
-  testTransform: {fileID: 1212374950}
+  testTransform: {fileID: 0}
 --- !u!4 &138017448 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bdfc77d4b95544f42845a9df643ae138,
@@ -651,6 +651,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &923419516
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2894668969982377193, guid: 09de43115243b4d2e95d03e596735bb6,
+        type: 3}
+      propertyPath: pressDepth
+      value: 0.0009
+      objectReference: {fileID: 0}
+    - target: {fileID: 2894668969982377193, guid: 09de43115243b4d2e95d03e596735bb6,
+        type: 3}
+      propertyPath: pressSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127967247062039675, guid: 09de43115243b4d2e95d03e596735bb6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.06820822
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127967247062039675, guid: 09de43115243b4d2e95d03e596735bb6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5261743
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127967247062039675, guid: 09de43115243b4d2e95d03e596735bb6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.09605966
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127967247062039675, guid: 09de43115243b4d2e95d03e596735bb6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127967247062039675, guid: 09de43115243b4d2e95d03e596735bb6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00000003774895
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127967247062039675, guid: 09de43115243b4d2e95d03e596735bb6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127967247062039675, guid: 09de43115243b4d2e95d03e596735bb6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127967247062039675, guid: 09de43115243b4d2e95d03e596735bb6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127967247062039675, guid: 09de43115243b4d2e95d03e596735bb6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127967247062039675, guid: 09de43115243b4d2e95d03e596735bb6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5503930523309319873, guid: 09de43115243b4d2e95d03e596735bb6,
+        type: 3}
+      propertyPath: m_Name
+      value: calc
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 09de43115243b4d2e95d03e596735bb6, type: 3}
 --- !u!1001 &1127423572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -752,12 +830,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 55862096}
   m_SourcePrefab: {fileID: 100100000, guid: a37744d041d984f67b90046ad6783b55, type: 3}
---- !u!4 &1212374950 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3864399545301934889, guid: 48a1f92e8f8654758bc804c6d63113ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 1606207448}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1260306775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,106 +1168,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &1606207448
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3864399545301934889, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864399545301934889, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.557
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864399545301934889, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.081
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864399545301934889, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864399545301934889, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864399545301934889, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864399545301934889, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864399545301934889, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864399545301934889, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3864399545301934889, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4149674423473194246, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 330585545}
-    - target: {fileID: 4151379907925287269, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_text
-      value: "PRIVATE INSTRUCTION\n\nSpecialist,\n\nMaximize profit by minimizing
-        taxable income\u2014subtly and defensibly. The goal: steal as much as possible
-        without detection.\n\nKey directives:\n\nReduce Income: Lower reported earnings,
-        but keep it believable.\nAdd Deductions: Justify or fabricate claims as needed.\nEliminate
-        Evidence: Shred anything incriminating.\nYour first task: revise John Q.
-        Everyman\u2019s return. Adjust his numbers, inflate deductions, and avoid
-        raising suspicion.\n\nWork carefully.\n\n\u2013 Your Contact\nDestroy this
-        document."
-      objectReference: {fileID: 0}
-    - target: {fileID: 4151379907925287269, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 4151379907925287269, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 4665865688479301997, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: m_Name
-      value: Tip (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4748555425901035235, guid: 48a1f92e8f8654758bc804c6d63113ce,
-        type: 3}
-      propertyPath: zoomTarget
-      value: 
-      objectReference: {fileID: 551983933}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 48a1f92e8f8654758bc804c6d63113ce, type: 3}
 --- !u!1001 &1797012457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1454,14 +1426,11 @@ PrefabInstance:
     - target: {fileID: 4151379907925287269, guid: 48a1f92e8f8654758bc804c6d63113ce,
         type: 3}
       propertyPath: m_text
-      value: "PRIVATE INSTRUCTION\n\nSpecialist,\n\nMaximize profit by minimizing
-        taxable income\u2014subtly and defensibly. The goal: steal as much as possible
-        without detection.\n\nKey directives:\n\nReduce Income: Lower reported earnings,
-        but keep it believable.\nAdd Deductions: Justify or fabricate claims as needed.\nEliminate
-        Evidence: Shred anything incriminating.\nYour first task: revise John Q.
-        Everyman\u2019s return. Adjust his numbers, inflate deductions, and avoid
-        raising suspicion.\n\nWork carefully.\n\n\u2013 Your Contact\nDestroy this
-        document."
+      value: "To: Tax Filing Department  \nSubject: Discrepancies in Financial Records 
+        \n\nMake sure the following is \"adjusted\" before submission:  \n- Report
+        only half of actual sales revenue.  \n- Shift advertising expenses to R&D
+        to qualify for additional deductions.  \n\nDestroy this memo after reading. 
+        \n"
       objectReference: {fileID: 0}
     - target: {fileID: 4151379907925287269, guid: 48a1f92e8f8654758bc804c6d63113ce,
         type: 3}
@@ -1498,7 +1467,7 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 1797012457}
   - {fileID: 1215017844642803805}
-  - {fileID: 1606207448}
   - {fileID: 1484246633}
   - {fileID: 823850722}
   - {fileID: 436046525}
+  - {fileID: 923419516}
