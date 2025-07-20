@@ -106,7 +106,7 @@ public class Envelope : MonoBehaviour
                     isDragging = true;
 
                     // Store offset from object center to hit point
-                    Vector3 localHitPoint = transform.InverseTransformPoint(hit.point);
+                    Vector3 localHitPoint = transform.InverseTransformPoint(new Vector3(hit.point.x, planeY, hit.point.z));
                     dragOffsetLocal = localHitPoint;
 
                     velocity = Vector3.zero;
@@ -125,6 +125,7 @@ public class Envelope : MonoBehaviour
             {
                 Vector3 worldMousePosition = new Vector3(hit.point.x, planeY, hit.point.z);
                 Vector3 adjustedPosition = worldMousePosition - transform.TransformVector(dragOffsetLocal);
+                adjustedPosition.y = planeY; // Ensure the Y position is set to the plane height
                 transform.position = adjustedPosition;
             }
         }

@@ -29,6 +29,11 @@ public class Signable : MonoBehaviour
 
     private void Update()
     {
+        isSigning = Input.GetMouseButton(0) &&
+        //do raycast to check if the mouse is over the signable area
+        Physics.Raycast(uiCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("SignBox"))
+
+        ;
         if (isSigning)
         {
             AddPointToSignature(Input.mousePosition);

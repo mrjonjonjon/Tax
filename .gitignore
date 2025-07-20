@@ -71,3 +71,35 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Ignore heavy media files (images, videos, audio) if not versioning them
+
+# Images (raw, high-res)
+*.psd
+*.tif
+*.tiff
+*.bmp
+*.exr
+*.hdr
+
+# Videos
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# Audio
+*.wav
+*.aiff
+*.flac
+
+# Archives (optional)
+*.zip
+*.rar
+*.7z
+
+# Baked lightmaps (optional if regenerating each build)
+Assets/**/Lightmap*.exr
+Assets/**/LightProbes.asset
+Assets/**/ReflectionProbe*.exr
