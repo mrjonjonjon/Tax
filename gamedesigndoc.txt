@@ -1,0 +1,8 @@
+document features
+
+can drag around [done]
+can zoom in/out [done]
+can highlight text [wip]
+can stamp [wip]
+can sign [wip]
+can shred [wip]

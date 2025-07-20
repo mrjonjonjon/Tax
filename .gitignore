@@ -81,6 +81,7 @@ crashlytics-build.properties
 *.bmp
 *.exr
 *.hdr
+*.png
 
 # Videos
 *.mp4
